@@ -14,14 +14,14 @@ const version = "1.0.0"
 
 // Config struct for all our config settings for our app
 type config struct {
-	port int
 	env  string
+	port int
 }
 
 // Define aplication structt for dependency injection
 type application struct {
-	config config
 	logger *slog.Logger
+	config config
 }
 
 func main() {
