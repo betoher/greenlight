@@ -11,6 +11,7 @@ import (
 	"time"
 
 	_ "github.com/lib/pq"
+	"greenlight.betocodes.io/internal/data"
 )
 
 // A string containing the application version number. Later it will be generated automatically.
@@ -32,6 +33,7 @@ type config struct {
 type application struct {
 	logger *slog.Logger
 	config config
+	models data.Models
 }
 
 func main() {
@@ -75,6 +77,7 @@ func main() {
 	app := &application{
 		config: cfg,
 		logger: logger,
+		models: data.NewModels(db),
 	}
 
 	srv := &http.Server{
